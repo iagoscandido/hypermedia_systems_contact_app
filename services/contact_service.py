@@ -7,7 +7,6 @@ db = Database()
 
 
 class ContactService(BaseModel):
-
     @staticmethod
     def create(c: Contact):
         return db.create(c)

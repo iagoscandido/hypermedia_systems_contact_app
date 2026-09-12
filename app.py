@@ -8,6 +8,7 @@ app.secret_key = "secret-key"
 
 CONTACTS_ENDPOINT: str = "/contacts"
 NEW_CONTACT_ENDPOINT: str = f"{CONTACTS_ENDPOINT}/new"
+
 service = ContactService()
 
 
@@ -34,10 +35,11 @@ def contacts_new_get():
 @app.route(NEW_CONTACT_ENDPOINT, methods=["POST"])
 def contacts_new():
     c = Contact(
-        first=request.form['first_name'],
-        last=request.form['last_name'],
-        phone=request.form['phone'],
-        email=request.form['email'])
+        first=request.form["first_name"],
+        last=request.form["last_name"],
+        phone=request.form["phone"],
+        email=request.form["email"],
+    )
 
     save = service.create(c)
 
@@ -63,10 +65,11 @@ def contacts_edit_get(contact_id: int):
 @app.route("/contacts/<contact_id>/edit", methods=["POST"])
 def contacts_edit():
     contact = Contact(
-        first=request.form['first_name'],
-        last=request.form['last_name'],
-        phone=request.form['phone'],
-        email=request.form['email'])
+        first=request.form["first_name"],
+        last=request.form["last_name"],
+        phone=request.form["phone"],
+        email=request.form["email"],
+    )
     update_contact = service.update(contact)
 
     if update_contact:

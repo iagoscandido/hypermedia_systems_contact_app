@@ -5,7 +5,6 @@ from models.contact_model import Contact
 
 
 class Database:
-
     def __init__(self, database: str = "app.db"):
         self.database = database
         self._create_table()
@@ -70,7 +69,6 @@ class Database:
 
     def get_by_any(self, search: str) -> list[Contact]:
         with self._connect() as connection:
-
             rows = connection.execute(
                 """
                 SELECT id, first, last, phone, email
@@ -80,8 +78,12 @@ class Database:
                    OR phone LIKE ?
                    OR email LIKE ?
                 """,
-                (query_like(search), query_like(search),
-                 query_like(search), query_like(search)),
+                (
+                    query_like(search),
+                    query_like(search),
+                    query_like(search),
+                    query_like(search),
+                ),
             ).fetchall()
 
             return [
