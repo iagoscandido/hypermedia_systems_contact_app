@@ -18,6 +18,7 @@
       <th>Last</th>
       <th>Phone</th>
       <th>Email</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +31,7 @@
       <td>
         <a href="/contacts/{{ contact.id }}">View</a>
         <a href="/contacts/{{ contact.id }}/edit">Edit</a>
+        <a href="/contacts/ {{ contact.id }}/delete">Delete</a>
       </td>
     </tr>
     {% endfor %}

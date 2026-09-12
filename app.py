@@ -77,3 +77,10 @@ def contacts_edit():
         return redirect(CONTACTS_ENDPOINT)
 
     return render_template("edit.html", contact=update_contact)
+
+
+@app.route("/contacts/<contact_id>/delete", methods=["GET", "DELETE"])
+def contacts_delete(contact_id: int):
+    service.delete(contact_id)
+    flash("Deleted contact!")
+    return redirect("/contacts")
